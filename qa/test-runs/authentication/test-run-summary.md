@@ -34,24 +34,29 @@ The test run covered authentication functionality, including:
 
 ## Failed Test Case
 
-### OJST-3 — Login with invalid email format
+### OJST-3 — Login form validation for invalid email format
 
-**Observed behavior:**
+**Execution history:**
 
-The login form was submitted with the invalid email value `besoj57936.pl`. The application displayed `Invalid email or password.` without a specific email format validation message.
+The initial execution used the input `user@` and was marked as Passed under the original expected result, which allowed either appropriate validation feedback or login feedback. The test case was later revised to require a specific email format validation message and retested using `besoj57936.pl`.
 
-**Expected behavior:**
+The Passed and Failed statuses therefore reflect different expected results across the two executions.
 
-The test case expected the application to prevent submission and display a specific validation message indicating that the email address format was invalid.
+**Latest observed behavior:**
+
+The login form was submitted with `besoj57936.pl`. The application displayed `Invalid email or password.` without a specific email format validation message. The user remained unauthenticated.
 
 **Assessment:**
 
-The observed behavior differs from the expected result defined in the test case. Confirmation against the application's requirements is needed before classifying this behavior as a confirmed defect.
+The latest execution was marked as Failed because the observed behavior did not match the expected result defined for that execution. However, the requirement for a specific email format validation message has not been independently confirmed.
+
+The result should therefore be treated as an observation requiring requirements clarification, rather than a confirmed application defect.
 
 **Evidence:**
 
 - Screenshot: `../../evidence/screenshots/OJST-3-invalid-email-format.png`
 - Detailed report: `../../bug-reports/OJST-3-invalid-email-format.md`
+
 
 ## Observations
 
