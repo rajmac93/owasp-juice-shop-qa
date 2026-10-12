@@ -1,4 +1,4 @@
-# OJST-3 — Invalid Email Format Validation
+# OJST-3 — No Specific Validation Message for Invalid Email Format
 
 ## Summary
 The login form accepts an email address with an invalid format and allows the form to be submitted.
@@ -25,3 +25,6 @@ Screenshot: `../evidence/screenshots/OJST-3-invalid-email-format.png`
 
 ## Status
 Observed behavior documented. Further confirmation against the application's requirements is needed to determine whether this is a defect.
+
+## Qase Export
+[Download defect export (CSV)](exports/OJST-2026-10-12.csv)
