@@ -1,0 +1,199 @@
+case_id,title,suite,suite_id,assignee,time_spent_ms,status,finish_time,steps,steps_input_data,steps_expected_result,steps_status,steps_comments,comment,stacktrace,priority,severity,automation,type,tags,is_muted,case_parameter
+1,"Login with valid credentials",Authentication,1,"Maciej Rajtar",229446,Passed,"2026-10-11 08:40:06","1. Open the OWASP Juice Shop application.
+2. Navigate to the Login page.
+3. Enter a valid email address and password.
+4. Click the Login button.
+","1. 
+2. 
+3. 
+4. 
+","1. The application loads successfully and the home page is displayed.
+2. The Login page is displayed with email and password fields.
+3. The email address and password are entered into the corresponding fields.
+4. The user is authenticated and the application displays the logged-in state.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. The application loaded successfully and the home page was displayed.
+2. The Login page was displayed with email and password fields.
+3. The valid email address and password were entered into the corresponding fields.
+4. The user was successfully authenticated and the application displayed the logged-in state.",,,Medium,Normal,Manual,Other,,false,
+2,"Login with invalid password",Authentication,1,"Maciej Rajtar",272652,Passed,"2026-10-11 08:45:46","1. Open the OWASP Juice Shop application.
+2. Navigate to the Login page.
+3. Enter the registered email address and an incorrect password.
+4. Click the Login button.
+","1. 
+2. 
+3. 
+4. 
+","1. The application loads successfully and the home page is displayed.
+2. The Login page is displayed with email and password fields.
+3. The entered values are accepted by the form for submission.
+4. The login attempt is rejected, an appropriate error message is displayed, and the user remains logged out.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. The application loaded successfully and the home page was displayed.
+2. The Login page was displayed with email and password fields.
+3. The registered email address and an incorrect password were entered into the corresponding fields.
+4. The login attempt was rejected, an error message was displayed, and the user remained logged out.",,,High,Normal,Manual,Other,,false,
+3,"Login with invalid email format",Authentication,1,"Maciej Rajtar",148418,Passed,"2026-10-12 13:11:38","1. Open the Login page.
+2. Enter an invalid email format, for example `user@`
+3. Enter any password.
+4. Attempt to submit the form.
+","1. 
+2. 
+3. 
+4. 
+","1. The email and password fields are displayed.
+2. The email field contains the entered value.
+3. The password field contains the entered value.
+4. The application prevents successful authentication and provides appropriate validation or login feedback.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. The Login page was displayed with email and password fields.
+2. The email field accepted the input value ""user@"".
+3. The password field accepted the entered value.
+4. The application prevented form submission because the email address had an invalid format. Successful authentication was not possible.",,,Medium,Normal,Manual,Other,,false,
+3,"Login form validation for invalid email format",Authentication,1,"Maciej Rajtar",0,Retest,"2026-10-12 13:51:13","1. Open the Login page.
+2. Enter an invalid email format, for example `besoj57936.pl`
+3. Enter any password.
+4. Attempt to submit the form.
+","1. 
+2. 
+3. 
+4. 
+","1. The Login page is displayed with email and password fields.
+2. The email field accepts the input, but the address does not match a valid email format.
+3. The password field accepts the entered value.
+4. The application prevents submission and displays a specific validation message indicating that the email address format is invalid.
+",,,,,Medium,Normal,Manual,Other,,false,
+3,"Login form validation for invalid email format",Authentication,1,"Maciej Rajtar",45000,Failed,"2026-10-12 13:53:56","1. Open the Login page.
+2. Enter an invalid email format, for example `besoj57936.pl`
+3. Enter any password.
+4. Attempt to submit the form.
+","1. 
+2. 
+3. 
+4. 
+","1. The Login page is displayed with email and password fields.
+2. The email field accepts the input, but the address does not match a valid email format.
+3. The password field accepts the entered value.
+4. The application prevents submission and displays a specific validation message indicating that the email address format is invalid.
+","1. Passed
+2. Passed
+3. Passed
+4. Failed
+","1. 
+2. 
+3. 
+4. ","The form was submitted with the invalid email format ""besoj57936.pl"". The application displayed ""Invalid email or password."" without a specific email format validation message.",,Medium,Normal,Manual,Other,,false,
+4,"Login with empty credentials",Authentication,1,"Maciej Rajtar",79082,Passed,"2026-10-12 13:13:12","1. Open the Login page.
+2. Leave both fields empty.
+3. Click the Login button, if it is enabled.
+","1. 
+2. 
+3. 
+","1. The email and password fields are displayed.
+2. Both fields remain empty.
+3. The application prevents successful authentication and indicates that the required credentials are missing or invalid.
+","1. Passed
+2. Passed
+3. Passed
+","1. The Login page was displayed with email and password fields.
+2. Both the email and password fields remained empty.
+3. The Login button remained disabled while both fields were empty, preventing form submission.",,,Medium,Normal,Manual,Other,,false,
+4,"Login with empty credentials",Authentication,1,"Maciej Rajtar",0,Retest,"2026-10-12 13:50:18","1. Open the Login page.
+2. Leave both fields empty.
+3. Click the Login button, if it is enabled.
+","1. 
+2. 
+3. 
+","1. The email and password fields are displayed.
+2. Both fields remain empty.
+3. The application prevents successful authentication and indicates that the required credentials are missing or invalid.
+",,,,,Medium,Normal,Manual,Other,,false,
+4,"Login with empty credentials",Authentication,1,"Maciej Rajtar",41388,Passed,"2026-10-12 13:51:01","1. Open the Login page.
+2. Leave both fields empty.
+3. Click the Login button, if it is enabled.
+","1. 
+2. 
+3. 
+","1. The email and password fields are displayed.
+2. Both fields remain empty.
+3. The application prevents successful authentication and indicates that the required credentials are missing or invalid.
+","1. Passed
+2. Passed
+3. Passed
+","1. The email and password fields are displayed.
+2. Both fields remain empty.
+3. The application prevents successful authentication",,,Medium,Normal,Manual,Other,,false,
+5,"Logout successfully",Authentication,1,"Maciej Rajtar",191846,Passed,"2026-10-12 13:16:29","1. Open the OWASP Juice Shop application while logged in.
+2. Open the Account menu.
+3. Select the Logout option.
+4. Check the account menu or login state.
+","1. 
+2. 
+3. 
+4. 
+","1. The application displays the authenticated state.
+2. The account menu is displayed with the available account options.
+3. The application ends the authenticated session.
+4. The user is no longer authenticated and the login option is available.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. The application opened successfully and displayed the authenticated state.
+2. The Account menu was displayed with the available account options.
+3. The application ended the authenticated session.
+4. The user was no longer authenticated, and the Login option was available.",,,High,Normal,Manual,Other,,false,
+6,"Access account after logout",Authentication,1,"Maciej Rajtar",402167,Passed,"2026-10-12 13:23:53","1. Log out of the application.
+2. Open the Account menu.
+3. Attempt to access a page or function that requires authentication through the UI.
+","1. 
+2. 
+3. 
+","1. The application displays the unauthenticated state.
+2. The application does not display the user's authenticated account state.
+3. The application requires authentication or redirects the user to the appropriate page.
+","1. Passed
+2. Passed
+3. Passed
+","1. The application displays the unauthenticated state.
+2. The application does not display the user's authenticated account state.
+3. The application requires authentication",,,High,Normal,Manual,Other,,false,
+7,"Login with unknown email",Authentication,1,"Maciej Rajtar",157775,Passed,"2026-10-12 14:27:02","1. Open the Login page.
+2. Enter an email address that is not registered.
+3. Enter a password and submit the form.
+","1. 
+2. 
+3. 
+","1. The login form is displayed.
+2. The email field contains the provided address.
+3. Authentication is rejected and the user remains logged out.
+","1. Passed
+2. Passed
+3. Passed
+","1. The Login page was displayed successfully.
+2. The email field accepted the provided address.
+3. The application rejected the login attempt and the user remained logged out.",,,High,Normal,Manual,Other,,false,
+8,"Login with password containing special characters",Authentication,1,"Maciej Rajtar",314908,Passed,"2026-10-12 14:32:19","1. Open the Login page.
+2. Enter the email address of the account prepared for this test.
+3. Enter the account's valid password containing special characters.
+","1. 
+2. 
+3. 
+","1. The login form is displayed.
+2. The email address is entered into the corresponding field.
+3. The password is entered and handled as input by the form.
+","1. Passed
+2. Passed
+3. Passed
+","1. The Login page was displayed successfully.
+2. The email address was entered into the corresponding field successfully.
+3. The password was entered into the password field successfully, and the user logged in successfully.",,,Medium,Normal,Manual,Other,,false,
