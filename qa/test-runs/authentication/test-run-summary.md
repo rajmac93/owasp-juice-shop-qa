@@ -54,8 +54,8 @@ The result should therefore be treated as an observation requiring requirements 
 
 **Evidence:**
 
-- Screenshot: `../../evidence/screenshots/OJST-3-invalid-email-format.png`
-- Detailed report: `../../bug-reports/OJST-3-invalid-email-format.md`
+- Screenshot: `../../evidence/screenshots/D-1-invalid-email-format-on-login.png`
+- Detailed report: `../../bug-reports/D-1-invalid-email-format-on-login.md`
 
 
 ## Observations

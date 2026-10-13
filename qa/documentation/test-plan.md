@@ -7,78 +7,83 @@
 **Testing Type:** Manual Web Application Testing  
 **Project Status:** In Progress
 
-This project aims to demonstrate a structured QA workflow through
-test planning, test design, manual test execution, defect reporting,
-and regression testing.
+This project demonstrates a structured QA workflow, including test
+planning, test design, manual test execution, defect reporting, and
+regression testing.
 
-The application is intentionally vulnerable and is used here as a
-local educational testing environment.
+OWASP Juice Shop is an intentionally vulnerable application used in
+this project as a local educational testing environment.
 
 ## 2. Test Objectives
 
 The objectives of this project are to:
 
-- Check the core user workflows that have been selected.
-- Check form validation and how errors are handled.
-- Find unexpected problems with how something works.
-- Carry out positive, negative, and boundary testing.
-- Record test results and the evidence that supports them.
-- Make sure that defect reports are clear and can be reproduced.
-Look at the security-related behaviours in the local environment.
+- Verify the selected user workflows.
+- Check form validation and error handling.
+- Identify unexpected application behaviour.
+- Apply positive, negative, and boundary value testing.
+- Record test results and supporting evidence.
+- Prepare clear, reproducible defect reports.
+- Explore selected security-related behaviours in the local environment.
 
 ## 3. Scope
 
 ### 3.1 In Scope
 
-The initial functional testing scope includes:
+The planned functional testing scope includes:
 
-- Registration of users and verification of their identities.
-- The product catalog and the ability to search for products.
+- User authentication and registration.
+- Product catalogue and product search.
 - Shopping cart operations.
 - Checkout workflow.
-Form checks and error messages.
-- The navigation features and certain aspects of the user interface.
+- Form validation and error messages.
+- Navigation and selected user interface behaviours.
 
 Additional activities may include:
 
 - Exploratory testing.
 - Regression testing.
 - Selected API testing.
-- Carrying out security testing on the local application under control.
+- Security testing of the local application within the controlled environment.
 
-### 3.2 Not included
+The scope is being addressed incrementally. The areas currently documented
+as tested are authentication and registration. The remaining areas are
+planned and must not be considered tested until execution results are recorded.
+
+### 3.2 Out of Scope
 
 The initial phase excludes:
 
-- Conducting load and performance testing.
-- Testing the production systems or those of unrelated third-party services.
+- Load and performance testing.
+- Testing production systems or unrelated third-party services.
 - Automated test implementation.
 - Formal compliance certification.
-- Carrying out testing outside the approved local environment.
+- Testing outside the approved local environment.
 
-The scope could be changed as the project progresses.
+The scope may be revised as the project progresses.
 
 ## 4. Test Approach
 
-The testing will be carried out manually on a risk-based basis.
+Testing is performed manually, with attention to risk and the selected
+test objectives.
 
-The following techniques will be considered:
+The following techniques are used where appropriate:
 
-- When carrying out positive testing, you check that the expected behaviour occurs with valid inputs.
-- Negative testing involves checking a system's behaviour using invalid or unexpected inputs.
-- Boundary value analysis involves checking the values at and around the relevant limits.
-- Equivalence partitioning involves dividing the inputs into groups consisting of those expected to behave in the same way.
-- Exploratory testing involves looking into the behaviour of the application beyond the predefined steps.
-- Regression testing involves rechecking certain behaviours after modifications have been made.
+- **Positive testing:** checking expected behaviour with valid inputs.
+- **Negative testing:** checking behaviour with invalid or unexpected inputs.
+- **Boundary value analysis:** checking values at and around relevant limits.
+- **Equivalence partitioning:** grouping inputs expected to behave similarly.
+- **Exploratory testing:** investigating application behaviour beyond
+  predefined test steps.
+- **Regression testing:** rechecking selected behaviours after changes.
 
-The test cases will specify the preconditions, the test data, the steps, and the expected results.
-
-Actual results and execution statuses will be recorded only after
-The appropriate tests have been carried out.
+Test cases should specify preconditions, test data, steps, and expected
+results. Actual results and execution statuses are recorded after the
+corresponding tests have been performed.
 
 ## 5. Test Environment
 
-The initial test environment is documented in:
+The test environment is documented in:
 
 `qa/documentation/test-environment.md`
 
@@ -86,81 +91,82 @@ The application runs locally using Docker and is accessed at:
 
 `http://localhost:3000`
 
-The documented application version and Docker image digest will be
-served as the starting point for the environment baseline.
+The documented application version and Docker image digest provide a
+baseline for identifying the tested environment.
 
 ## 6. Entry Criteria
 
 Testing may begin when:
 
-- The application for that area is available.
-- It is possible to access the target workflow.
-The data needed for the test is either already available or can be obtained.
-The team has looked over the test cases that matter.
-The test environment is written down.
+- The application is available.
+- The target workflow can be accessed.
+- Required test data is available or can be created.
+- Relevant test cases have been reviewed.
+- The test environment has been documented.
 
-There may be extra conditions attached to individual tests.
+Additional entry criteria may apply to individual tests.
 
 ## 7. Exit Criteria
 
-The initial test cycle may be considered complete when:
+A test cycle may be considered complete when:
 
 - Planned test cases have been executed or explicitly marked as blocked
   or not run.
-The real results have been recorded.
-We have looked over the failed tests.
-- The defects in question have been recorded where suitable.
-Relevant evidence has been saved.
-The various risks and limitations have been summed up.
+- Actual results and execution statuses have been recorded.
+- Failed tests have been reviewed.
+- Relevant defects have been documented.
+- Supporting evidence has been saved.
+- Risks and limitations have been summarised.
 
-Just because the application has been completed doesn't mean that it is free from defects.
+Completion of a test cycle does not prove that the application is free
+from defects.
 
 ## 8. Defect Reporting
 
 A defect report should include, where applicable:
 
 - Unique defect identifier.
-- A title that is clear and to the point.
+- Clear, concise title.
 - Environment and preconditions.
 - Steps to reproduce.
 - Expected result.
 - Actual result.
-- Severity and priority.
+- Severity and priority, where assessed.
 - Supporting evidence.
 - Current status.
 
-Functional defects will be distinguished from intentionally vulnerable
-problems relating to behavior and educational security.
+Observed behaviour should be distinguished from a confirmed defect when
+the expected behaviour or requirement has not been established.
+
+Functional defects should also be distinguished from behaviours that are
+intentionally vulnerable in this educational application.
 
 ## 9. Risks and Limitations
 
-- The application has deliberately included security vulnerabilities.
-The behaviour of the application can vary from one version to another.
--The first scope includes only certain workflows.
-It cannot be guaranteed that manual testing will find all the defects.
-- Evidence may contain sensitive data and must be reviewed before
-  being published.
-- The Docker image tag `latest` is mutable; the recorded digest
-  Gives a more exact reference to the image that was tested.
+- The application intentionally contains security vulnerabilities.
+- Application behaviour may vary between versions.
+- The initial scope covers selected workflows rather than the entire application.
+- Manual testing cannot guarantee detection of all defects.
+- Evidence should be reviewed for sensitive information before publication.
+- The Docker image tag `latest` is mutable; the recorded image digest
+  provides a more precise reference to the image inspected.
 
 ## 10. Test Deliverables
 
-The planned project artifacts include:
+Project deliverables include:
 
 - Test plan.
 - Test scenarios.
 - Detailed test cases.
-- Include documentation of the test data when necessary.
-- Test execution records.
+- Test data documentation, where needed.
+- Test execution records and summaries.
 - Defect reports.
 - Supporting evidence.
-- Test summary report.
 - Public portfolio repository.
 
 ## 11. References
 
 - OWASP Juice Shop Companion Guide:
   https://pwning.owasp-juice.shop/companion-guide/latest/
-
 - Test environment documentation:
   `qa/documentation/test-environment.md`

@@ -65,4 +65,4 @@ It does not remove the downloaded Docker image.
 - The image digest is recorded to improve reproducibility.
 - The HTTP check is a basic connectivity check, not a complete
   functional or security assessment.
-- Functional test execution has not yet been documented in this file.
+- Functional test execution results are documented in `qa/test-runs/`.

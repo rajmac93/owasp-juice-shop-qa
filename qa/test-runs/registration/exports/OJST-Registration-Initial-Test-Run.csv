@@ -1,0 +1,505 @@
+case_id,title,suite,suite_id,assignee,time_spent_ms,status,finish_time,steps,steps_input_data,steps_expected_result,steps_status,steps_comments,comment,stacktrace,priority,severity,automation,type,tags,is_muted,case_parameter
+9,"Register with valid data",Registration,2,"Maciej Rajtar",463865,Passed,"2026-10-12 20:08:53","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a valid password in the Password field and the same value in the Repeat Password field.
+5. Select a security question and enter an answer.
+6. Click the Register button.
+7. Log in using the registered email and password.
+","1. 
+2. 
+3. qa.user.09@example.com
+4. Password: Test@1234
+Repeat Password: Test@1234
+5. Security question: any option from the dropdown
+Answer: Test
+6. 
+7. Email: qa.user.09@example.com<br/>Password: Test@1234
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. Both fields accept the value and no validation error is displayed.
+5. The security question and answer are set and the Register button becomes enabled.
+6. The application redirects to the Login page and displays a message that the registration was completed successfully.
+7. The user is authenticated and the application displays the logged-in state.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Passed
+7. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. validation passed.
+4. Both fields accepted Test@1234, no validation error displayed.
+5. After selecting a security question and entering an answer, the Register button became enabled.
+6. Redrirected to the login page with note ""Registration completed successfully. You can now log in.""
+7. Logged in successfully with the new account; the logged-in state is displayed.",,,Medium,Normal,Manual,Other,registration,false,
+10,"Register with an invalid email format",Registration,2,"Maciej Rajtar",372411,Passed,"2026-10-13 07:14:26","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter an email address with an invalid format in the Email field and move the focus to the next field.
+4. Fill in the remaining fields with valid values.
+5. Check the state of the Register button.
+","1. 
+2. 
+3. invalid-email
+4. Password: Test@1234
+Repeat Password: Test@1234
+Security question: any option from the dropdown
+Answer: Test
+5. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. A validation error indicating that the email address is not valid is displayed for the Email field.
+4. The remaining fields accept the values.
+5. The Register button is disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. The registration form was displayed with the Email, Password, Repeat Password, Security Question and Answer fields, the Show password advice toggle, and a disabled Register button.
+3. The form displayed the validation message ""Email address is not valid."" below the Email field.
+4. The Password, Repeat Password, Security Question and Answer fields accepted the entered values.
+5. The Register button remained disabled because the email address was invalid, preventing registration.",,,Medium,Normal,Manual,Other,"registration,validation,email",false,
+11,"Register with empty required fields",Registration,2,"Maciej Rajtar",394353,Passed,"2026-10-12 19:50:14","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Click into the Email, Password, Repeat Password and Answer fields one after another without entering anything, then click outside the last field.
+4. Check the state of the Register button.
+","1. 
+2. 
+3. 
+4. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. Required-field validation errors are displayed for the touched fields.
+4. The Register button is disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Validation errors were displayed under the Email, Password and Repeat Password fields (e.g. ""Please provide a password.""). The Answer field also showed a required-field error.
+4. The Register button is greyed out and does not react to clicks.",,,Medium,Normal,Manual,Other,"registration,validation",false,
+12,"Register with a password that is too short",Registration,2,"Maciej Rajtar",1366629,Passed,"2026-10-13 12:42:57","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a 4-character password in the Password and Repeat Password fields.
+5. Select a security question, enter an answer and check the state of the Register button.
+","1. 
+2. 
+3. qa.user.1210@example.com
+4. Password: Te@1
+Repeat Password: Te@1
+5. Security question: any option from the dropdown
+Answer: Test
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. The password hint ""Password must be 5-40 characters long."" is displayed and the Password field is marked as invalid.
+5. The Register button remains disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. The Password field is marked as invalid and the hint ""Password must be 5-40 characters long."" is displayed.
+5. The Register button remained disabled; the registration could not be submitted.",,,High,Normal,Manual,Other,"registration,validation,password,boundary",false,
+13,"Register with a password of minimum length",Registration,2,"Maciej Rajtar",363301,Passed,"2026-10-13 12:51:40","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a 5-character password in the Password and Repeat Password fields.
+5. Select a security question, enter an answer and click the Register button.
+6. Log in using the registered email and the 5-character password.
+","1. 
+2. 
+3. qa.user.13@example.com
+4. Password: Te@12
+Repeat Password: Te@12
+5. Security question: any option from the dropdown
+Answer: Test
+6. Email: qa.user.13@example.com<br/>Password: Te@12
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. Both fields accept the value and no validation error is displayed.
+5. The application redirects to the Login page and displays a message that the registration was completed successfully.
+6. The user is authenticated and the application displays the logged-in state.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. Both fields accepted the 5-character value, no validation error displayed.
+5. Registration completed; redirected to the Login page with a success message.
+6. Logged in successfully with qa.user.13@example.com and the 5-character password; the logged-in state is displayed.",,,Medium,Normal,Manual,Other,"registration,password,boundary",false,
+14,"Register with a 20-character password",Registration,2,"Maciej Rajtar",266791,Passed,"2026-10-13 12:56:44","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a 20-character password in the Password and Repeat Password fields.
+5. Select a security question, enter an answer and click the Register button.
+6. Log in using the registered email and the 20-character password.
+","1. 
+2. 
+3. qa.user.14@example.com
+4. Password: Aa1@Aa1@Aa1@Aa1@Aa1@
+Repeat Password: Aa1@Aa1@Aa1@Aa1@Aa1@
+5. Security question: any option from the dropdown
+Answer: Test
+6. Email: qa.user.14@example.com<br/>Password: Aa1@Aa1@Aa1@Aa1@Aa1@
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. Both fields accept the full value, the Password counter shows 20/20 and no validation error is displayed.
+5. The application redirects to the Login page and displays a message that the registration was completed successfully.
+6. The user is authenticated and the application displays the logged-in state.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. Both fields accepted the 20-character password. The Password field counter displayed 20/20, although the application allowed passwords up to 40 characters. Defect D-2 was reported.
+5. Registration completed successfully. The application redirected to the Login page and displayed the message: ""Registration completed successfully. You can now log in.""
+6. Logged in successfully with qa.user.14@example.com and the 20-character password; the logged-in state is displayed.",,,Medium,Normal,Manual,Other,"registration,password,boundary",false,
+15,"Register with a password exceeding the field length limit",Registration,2,"Maciej Rajtar",497000,Failed,"2026-10-13 07:28:52","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a 41-character password in the Password field and observe the field and its counter.
+5. Enter the same 41-character value in the Repeat Password field and observe the field and its counter.
+6. Select a security question, enter an answer and check the state of the Register button.
+","1. 
+2. 
+3. qa.user.1210@example.com
+4. Password (41 chars): Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@A
+5. 
+6. Security question: any option from the dropdown
+Answer: Test
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. The field does not accept more characters than its limit, or a validation error is displayed. The observed limit is recorded and is consistent with the ""5-40 characters"" hint.
+5. The field does not accept more characters than its limit, or a validation error is displayed. The observed limit is recorded.
+6. An account with a password longer than the allowed maximum cannot be created.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Failed
+6. Untested
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. The Password field accepted the pasted 41-character value and displayed the red error ""Password must be 5-40 characters long."" After removing one character (40) the error disappeared. Observed limit: 40, consistent with the hint. Note: the counter showed ""40/20"" (reported separately).
+5. The Repeat Password field accepted the 41-character value and displayed a counter of 41/40 without showing a validation error. The Password field displayed the validation message ""Password must be 5-40 characters long."" for the same value. This indicates inconsistent validation between the two fields.
+6. ","Repeat password field were accept same password as before within 41 characters. Should be a validation error same as in ""password"" field",,Medium,Normal,Manual,Other,"registration,password,boundary,to-verify",false,
+16,"Register with mismatched password confirmation",Registration,2,"Maciej Rajtar",908691,Passed,"2026-10-13 13:13:35","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a valid password in the Password field.
+5. Enter a different value in the Repeat Password field and move the focus away.
+6. Select a security question, enter an answer and check the state of the Register button.
+","1. 
+2. 
+3. qa.user.1210@example.com
+4. Password: Test@1234
+5. Repeat Password: Test@5678
+6. Security question: any option from the dropdown
+Answer: Test
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. The password is accepted.
+5. A validation error indicating that the passwords do not match is displayed.
+6. The Register button is disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. Password was accepted.
+5. The validation message ""Passwords do not match"" was displayed below the Repeat Password field.
+6. The Register button remained disabled, preventing form submission.",,,Medium,Normal,Manual,Other,"registration,validation,password",false,
+17,"Change the password after filling in the confirmation",Registration,2,"Maciej Rajtar",160000,Failed,"2026-10-13 13:30:01","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a valid password in the Password field and the same value in the Repeat Password field.
+5. Select a security question and enter an answer.
+6. Change the value of the Password field to a different valid value, without touching the Repeat Password field.
+7. Check the state of the Register button.
+","1. 
+2. 
+3. qa.user.1210@example.com
+4. Password: Test@1234
+Repeat Password: Test@1234
+5. Security question: any option from the dropdown
+Answer: Test
+6. Password: Test@5678
+7. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. Both fields accept the value and no mismatch error is displayed.
+5. The Register button is enabled.
+6. A validation error indicating that the passwords do not match is displayed.
+7. The Register button is disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Failed
+7. Untested
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. Both fields was accepted and no error displayed.
+5. Register button were enabled and i can finish the registration process
+6. 
+7. ","After changing the Password field without updating the Repeat Password field, no validation message indicating that the passwords did not match was displayed. The Register button remained enabled, and the registration was successfully completed despite the mismatched passwords. The application redirected to the Login page and displayed the ""Repetitive Registration"" challenge completion message.",,Medium,Normal,Manual,Other,"registration,validation,password",false,
+18,"Register with an already registered email address",Registration,2,"Maciej Rajtar",2926194,Passed,"2026-10-13 14:31:27","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter the email address of an existing account in the Email field.
+4. Fill in the remaining fields with valid values.
+5. Click the Register button.
+","1. 
+2. 
+3. admin@juice-sh.op
+4. Password: Test@1234
+Repeat Password: Test@1234
+Security question: any option from the dropdown
+Answer: Test
+5. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is entered into the field.
+4. The remaining fields accept the values and the Register button is enabled.
+5. The registration is rejected, an error message stating that the email must be unique is displayed and the user stays on the registration form.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. All required fields accepted the entered values, and the Register button became enabled.
+5. The registration is rejected, an error message indicating that the email address must be unique is displayed, and the user remains on the registration form.",,,High,Normal,Manual,Other,"registration,duplicate",false,
+19,"Register with an existing email address in different letter case",Registration,2,"Maciej Rajtar",323000,Failed,"2026-10-13 14:43:50","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter the email address of an existing account with changed letter case in the Email field.
+4. Fill in the remaining fields with valid values.
+5. Click the Register button.
+","1. 
+2. 
+3. ADMIN@juice-sh.op
+4. Password: Test@1234
+Repeat Password: Test@1234
+Security question: any option from the dropdown
+Answer: Test
+5. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is entered into the field.
+4. The remaining fields accept the values and the Register button is enabled.
+5. The registration is rejected and an error message stating that the email must be unique is displayed.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Failed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. All required fields accepted the entered values, and the Register button became enabled.
+5. ","Registration completed successfully using the email address [ADMIN@juice-sh.op](mailto:ADMIN@juice-sh.op), despite the existing account using a different letter case. The application redirected to the Login page and displayed the registration success message. The newly created account was accessible, and its profile displayed the email address [ADMIN@juice-sh.op](mailto:ADMIN@juice-sh.op).",,Medium,Normal,Manual,Other,"registration,duplicate,to-verify",false,
+20,"Register with a password containing special characters",Registration,2,"Maciej Rajtar",151468,Passed,"2026-10-13 16:13:22","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address in the Email field.
+4. Enter a password containing special characters in the Password and Repeat Password fields.
+5. Select a security question, enter an answer and click the Register button.
+6. Log in using the registered email and the password with special characters.
+","1. 
+2. 
+3. qa.user.20@example.com
+4. Password: P@ss!#$%&*()_+
+Repeat Password: P@ss!#$%&*()_+
+5. Security question: any option from the dropdown
+Answer: Test
+6. Email: qa.user.20@example.com<br/>Password: P@ss!#$%&\*()\_+
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. Both fields accept the value and no validation error is displayed.
+5. The application redirects to the Login page and displays a message that the registration was completed successfully.
+6. The user is authenticated and the application displays the logged-in state.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+6. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. Both fields accepted the value, no validation error displayed.
+5. All required fields accepted the entered values, and the Register button became enabled.
+6. Logged in successfully with qa.user.20@example.com and a password containing special characters; the logged-in state is displayed.",,,Medium,Normal,Manual,Other,"registration,password",false,
+21,"Register with a valid email in a non-standard format",Registration,2,"Maciej Rajtar",95464,Passed,"2026-10-13 16:14:58","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique, valid email address containing a plus sign and a subdomain in the Email field.
+4. Fill in the remaining fields with valid values.
+5. Click the Register button.
+","1. 
+2. 
+3. qa.user+reg.1210@mail.example.com
+4. Password: Test@1234
+Repeat Password: Test@1234
+Security question: any option from the dropdown
+Answer: Test
+5. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The email is accepted and no validation error is displayed.
+4. The remaining fields accept the values and the Register button is enabled.
+5. The application redirects to the Login page and displays a message that the registration was completed successfully.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Email accepted, no validation error displayed.
+4. All required fields accepted the entered values, and the Register button became enabled.
+5. Registration completed; redirected to the Login page with a success message.",,,Medium,Normal,Manual,Other,"registration,email",false,
+22,"Register with leading or trailing spaces in the email field",Registration,2,"Maciej Rajtar",201833,Passed,"2026-10-13 16:25:22","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Enter a unique email address with a single leading space in the Email field and move the focus to the next field.
+4. Replace the value with a unique email address with a single trailing space.
+5. Fill in the remaining fields with valid values and check the state of the Register button.
+","1. 
+2. 
+3. [space]qa.user.1210@example.com
+4. qa.user.1210@example.com[space]
+5. Password: Test@1234
+Repeat Password: Test@1234
+Security question: any option from the dropdown
+Answer: Test
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. A validation error indicating that the email address is not valid is displayed.
+4. A validation error indicating that the email address is not valid is displayed.
+5. The Register button is disabled and the registration cannot be submitted.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. The validation message ""Email address is not valid."" was displayed.
+4. The validation message ""Email address is not valid."" was displayed.
+5. The Register button remained disabled, and registration could not be completed.",,,Medium,Normal,Manual,Other,"registration,validation,email,to-verify",false,
+23,"Register without a security question and answer",Registration,2,"Maciej Rajtar",121376,Passed,"2026-10-13 16:27:38","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Fill in Email, Password and Repeat Password with valid values.
+4. Leave the Security Question and Answer fields empty and check the state of the Register button.
+5. Select a security question, leave the Answer field empty and move the focus away.
+","1. 
+2. 
+3. Email: qa.user.1210@example.com<br/>Password: Test@1234<br/>Repeat Password: Test@1234
+4. 
+5. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The fields accept the values and no validation error is displayed.
+4. The Register button is disabled and the registration cannot be submitted.
+5. A required-field validation error is displayed for the Answer field and the Register button remains disabled.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+5. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Fields accepted, no validation error displayed.
+4. The Register button remained disabled.
+5. The Register button remained disabled, and registration could not be completed",,,Medium,Normal,Manual,Other,"registration,validation",false,
+24,"Toggle the password advice",Registration,2,"Maciej Rajtar",130332,Passed,"2026-10-13 16:29:52","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Switch the ""Show password advice"" toggle on.
+4. Switch the ""Show password advice"" toggle off.
+","1. 
+2. 
+3. 
+4. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The toggle is on and the password advice is displayed.
+4. The toggle is off and the password advice is hidden.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Password advice was displayed.
+4. Password advice was hidden.",,,Low,Normal,Manual,Other,"registration,ui,to-verify",false,
+25,"Navigate from registration to login using the ""Already a customer?"" link",Registration,2,"Maciej Rajtar",63220,Passed,"2026-10-13 16:30:57","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the ""Not yet a customer?"" link.
+3. Click the ""Already a customer?"" link.
+","1. 
+2. 
+3. 
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed with the fields Email, Password, Repeat Password, Security Question and Answer, the ""Show password advice"" toggle and a disabled Register button.
+3. The Login page is displayed with the email and password fields.
+","1. Passed
+2. Passed
+3. Passed
+","1. Home page loaded, no errors.
+2. Registration form displayed with all fields, Register button disabled.
+3. Login page loaded, no errors.",,,Low,Normal,Manual,Other,"registration,navigation",false,
+26,"Password character counter matches the allowed limit",Registration,2,"Maciej Rajtar",74000,Failed,"2026-10-13 08:22:34","1. Open the OWASP Juice Shop application.
+2. Open the Account menu, select Login, then click the “Not yet a customer?” link.
+3. Enter a 10-character password in the Password field.
+4. Enter a 40-character password in the Password field.
+5. Enter the same 40-character password in the Repeat Password field.
+","1. 
+2. 
+3. Te@12Te@12
+4. Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@
+5. Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@Aa1@
+","1. The application loads successfully and the home page is displayed.
+2. The User Registration form is displayed and the counters of the Password and Repeat Password fields both show 0/40.
+3. The counter of the Password field shows 10/40.
+4. The counter of the Password field shows 40/40 and no validation error is displayed.
+5. The counter of the Repeat Password field shows 40/40.
+","1. Passed
+2. Failed
+3. Untested
+4. Untested
+5. Untested
+","1. The application loads successfully and the home page is displayed.
+2. 
+3. 
+4. 
+5. ","The User Registration form is displayed. The Password counter shows 0/20, the Repeat Password counter shows 0/40. Expected 0/40 in both fields.",,Low,Minor,Manual,Other,"ui,registration",false,
