@@ -1,0 +1,161 @@
+case_id,title,suite,suite_id,assignee,time_spent_ms,status,finish_time,steps,steps_input_data,steps_expected_result,steps_status,steps_comments,comment,stacktrace,priority,severity,automation,type,tags,is_muted,case_parameter
+27,"Add a product to the basket","Basket / Cart",3,"Maciej Rajtar",236704,Passed,"2026-10-15 15:36:52","1. Open the product catalogue.
+2. Click Add to Basket for Product A.
+3. Open the basket.
+","1. 
+2. Product A
+3. 
+","1. The catalogue is displayed and the price of Product A is visible.
+2. The basket indicator shows 1.
+3. The basket contains exactly one row: Product A, quantity 1, price equal to price A. The basket total equals price A.
+","1. Passed
+2. Passed
+3. Passed
+","1. The product catalogue was displayed, and the price of Product A was visible.
+2. Product A was added to the basket. The basket indicator showed 1.
+3. The basket contained one row for Product A with quantity 1. The displayed price matched the catalogue price, and the basket total was correct.",,,High,Major,"To be automated",Functional,"basket,smoke",false,
+28,"Add multiple products to the basket","Basket / Cart",3,"Maciej Rajtar",98314,Passed,"2026-10-15 15:38:24","1. Add Product A to the basket from the catalogue.
+2. Return to the catalogue and add Product B.
+3. Open the basket.
+","1. Product A
+2. Product B
+3. 
+","1. Product A is added; the basket indicator shows 1.
+2. Product B is added; the basket indicator shows 2.
+3. Two separate rows: Product A (quantity 1) and Product B (quantity 1). The basket total equals price A + price B.
+","1. Passed
+2. Passed
+3. Passed
+","1. Product A was added to the basket. The basket indicator showed 1.
+2. Product B was added to the basket. The basket indicator showed 2.
+3. The basket contained two rows for Product A with quantity 1 and product B with quantity 1. The displayed price matched the catalogue price, and the basket total was correct.",,,High,Major,"To be automated",Functional,basket,false,
+29,"Increase the quantity of a product in the basket","Basket / Cart",3,"Maciej Rajtar",446245,Passed,"2026-10-15 15:45:52","1. Open the basket.
+2. Increase the quantity by one using the quantity control.
+3. Check the item’s amount and the basket total.
+","1. 
+2. Initial quantity: 1; target quantity: 2
+3. 
+","1. Product A is displayed with quantity 1.
+2. The quantity of Product A is 2.
+3. The item amount equals 2 × price A and the basket total equals 2 × price A. **[VERIFY whether the Price column shows the unit price or the line amount, and write the expected value accordingly.]**
+","1. Passed
+2. Passed
+3. Passed
+","1. The basket contained Product A with quantity 1.
+2. The basket contained Product A with quantity 2.
+3. The item amount and basket total were updated correctly after increasing the quantity to 2.",,,High,Major,"To be automated",Functional,basket,false,
+30,"Decrease the quantity of a product in the basket","Basket / Cart",3,"Maciej Rajtar",79321,Passed,"2026-10-15 15:48:16","1. Open the basket.
+2. Decrease the quantity by one.
+3. Check the item’s amount and the basket total.
+","1. 
+2. Quantity: 2 → 1
+3. 
+","1. Product A is displayed with quantity 2.
+2. The item's quantity changes to 1.
+3. The item amount and the basket total equal price A.
+","1. Passed
+2. Passed
+3. Passed
+","1. The basket contained Product A with quantity 2.
+2. The quantity of Product A decreased from 2 to 1.
+3. The item price was 1.99, and the basket total was 1.99. The amounts were updated correctly after decreasing the quantity to 1.",,,Medium,Normal,"To be automated",Functional,basket,false,
+31,"Remove a product from the basket","Basket / Cart",3,"Maciej Rajtar",105959,Passed,"2026-10-15 15:50:01","1. Open the basket.
+2. Remove Product A using the delete control.
+3. Inspect the remaining contents and the total.
+","1. 
+2. Target: Product A
+3. 
+","1. Rows for Product A and Product B are visible. The total equals price A + price B.
+2. The Product A row disappears.
+3. Only Product B (quantity 1) remains. The basket total equals price B.
+","1. Passed
+2. Passed
+3. Passed
+","1. The basket displayed Product A and Product B, each with quantity 1. The total matched the sum of both product prices.
+2. Product A was successfully removed from the basket. Its row was no longer displayed.
+3. Only Product B remained in the basket with quantity 1. The basket total matched the price of Product B.",,,High,Major,"To be automated",Functional,basket,false,
+32,"Verify the basket total for multiple products","Basket / Cart",3,"Maciej Rajtar",341000,Failed,"2026-10-15 15:56:19","1. Add Product A to the basket twice from the catalogue.
+2. Add Product B once.
+3. Open the basket and compare the displayed total with the calculated value.
+","1. Product A, quantity 2
+2. Product B, quantity 1
+3. Expected total = 2 × price A + 1 × price B (to 2 decimal places)
+","1. Product A has quantity 2.
+2. Product B has quantity 1.
+3. The displayed total equals the calculated expected total.
+","1. Passed
+2. Passed
+3. Failed
+","1. Product A were quantity 2
+2. Product B were quantity 1
+3. The expected total was 6.97, but the application displayed 6.970000000000001. The basket total was not formatted to two decimal places.","The expected total was 6.97, but the application displayed 6.970000000000001. The basket total was not formatted to two decimal places.",,High,Critical,"To be automated",Functional,"basket,smoke",false,
+33,"Basket contents persist after logout and re-login","Basket / Cart",3,"Maciej Rajtar",843149,Passed,"2026-10-15 19:45:25","1. Open the basket and record the rows, quantities and total.
+2. Log out.
+3. Log in with the same test account.
+4. Open the basket.
+","1. 
+2. 
+3. Test account credentials
+4. 
+","1. Product A ×2, Product B ×1; total equals 2 × price A + price B.
+2. The user is logged out.
+3. Login succeeds and the authenticated state is displayed.
+4. The basket contains Product A ×2 and Product B ×1; the total matches the value recorded in step 1.
+","1. Passed
+2. Passed
+3. Passed
+4. Passed
+","1. In the basket were 2x Product A and 1x Product B
+2. The user was successfully logged out.
+3. Login was successful, and the authenticated state was displayed.
+4. The basket still contained 2 units of Product A and 1 unit of Product B after re-login.",,,High,Major,"To be automated",Integration,"basket,authentication",false,
+34,"Verify basket contents after refreshing the page","Basket / Cart",3,"Maciej Rajtar",313095,Passed,"2026-10-15 19:50:39","1. Open the basket and record the rows, quantities and total.
+2. Refresh the browser page.
+3. Compare the basket with the recorded state.
+","1. 
+2. 
+3. 
+","1. Product A ×2, Product B ×1; the total is recorded.
+2. The page reloads and the basket view is displayed without an error message.
+3. Same rows, same quantities, same total as in step 1.
+","1. Passed
+2. Passed
+3. Passed
+","1. The basket contained 2 units of Product A and 1 unit of Product B. The basket total was recorded.
+2. The page reloaded successfully, and the basket still contained 2 units of Product A and 1 unit of Product B.
+3. The basket contents remained unchanged after the refresh: Product A × 2 and Product B × 1. The basket state was preserved.",,,Low,Minor,Manual,Functional,basket,false,
+35,"Add the same product twice","Basket / Cart",3,"Maciej Rajtar",194658,Passed,"2026-10-15 19:53:55","1. Add Product A to the basket from the catalogue.
+2. Add Product A again from the catalogue.
+3. Open the basket.
+","1. Product A
+2. Product A
+3. 
+","1. Product A is added.
+2. Product A is added again.
+3. There is one row for Product A with quantity 2, and the total equals 2 × price A. **[VERIFY: one row with quantity 2, or two separate rows. Also check what the basket indicator shows.]**
+","1. Passed
+2. Passed
+3. Passed
+","1. Product A was successfully added to the basket.
+2. Product A was added to the basket again. The basket indicator increased by 1.
+3. The basket displayed one row for Apple Juice with quantity 2. The total price was 3.98 (2 × 1.99).",,,Medium,Normal,"To be automated",Functional,basket,false,
+36,"Decrease the quantity of a product with quantity 1","Basket / Cart",3,"Maciej Rajtar",215712,Passed,"2026-10-15 19:57:32","1. Open the basket.
+2. Use the decrease control.
+","1. 
+2. Quantity: 1 → ?
+","1. Product A is displayed with quantity 1.
+2. [VERIFY manually first, then write the observed behaviour: item removed, control disabled, or other. Do not mark Pass/Fail until you decide what is correct.]
+","1. Passed
+2. Passed
+","1. In the basket were product A with quantity 1
+2. After clicking the decrease control, the quantity remained 1. The product was not removed from the basket.",,,Medium,Normal,Manual,Functional,basket,false,
+37,"Access the basket without logging in","Basket / Cart",3,"Maciej Rajtar",174452,Passed,"2026-10-15 20:00:26","1. Open the product catalogue and click Add to Basket for Product A.
+2. Try to open the basket via the UI.
+","1. Product A
+2. 
+","1. **[VERIFY: the application asks for login, adds the product, or shows another message.]**
+2. **[VERIFY and write the observed behaviour.]**
+","1. Passed
+2. Passed
+","1. Product A was added to the basket without logging in. The basket indicator increased by 1.
+2. The basket opened successfully without logging in. Product A was displayed in the basket, and the session was anonymous.",,,Medium,Normal,Manual,Functional,"basket,authentication",false,
