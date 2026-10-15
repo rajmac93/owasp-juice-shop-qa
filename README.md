@@ -9,7 +9,7 @@ The goal of this project is to practice and document software testing activities
 ## Objectives
 
 - Design and execute manual functional test cases.
-- Test authentication and registration workflows.
+- Test authentication, registration, and basket workflows.
 - Verify input validation and form behavior.
 - Document actual and expected results.
 - Collect screenshots and other test evidence.
@@ -27,6 +27,7 @@ The goal of this project is to practice and document software testing activities
 | Linux Mint | Local testing environment |
 | Docker | Running the application locally |
 
+
 ## Project Structure
 
 ```text
@@ -36,6 +37,12 @@ The goal of this project is to practice and document software testing activities
 ├── qa/
 │   ├── api/
 │   ├── bug-reports/
+│   │   ├── D-1-invalid-email-format-on-login.md
+│   │   ├── D-2-password-counter.md
+│   │   ├── D-3-repeat-password-validation.md
+│   │   ├── D-4-registration-with-mismatched-passwords.md
+│   │   ├── D-5-email-case-sensitivity.md
+│   │   ├── D-6-basket-total-excessive-decimal-precision.md
 │   │   └── exports/
 │   ├── documentation/
 │   ├── evidence/
@@ -46,11 +53,18 @@ The goal of this project is to practice and document software testing activities
 │   │   └── videos/
 │   ├── notes/
 │   ├── test-cases/
+│   │   └── authentication/
 │   ├── test-runs/
 │   │   ├── authentication/
-│   │   │   └── exports/
+│   │   │   ├── exports/
+│   │   │   └── test-run-summary.md
+│   │   ├── basket-cart/
+│   │   │   ├── exports/
+│   │   │   ├── test-run-plan.md
+│   │   │   └── test-run-summary.md
 │   │   └── registration/
-│   │       └── exports/
+│   │       ├── exports/
+│   │       └── test-run-summary.md
 │   └── test-scenarios/
 └── README.md
 ```
@@ -80,6 +94,20 @@ The initial registration test run contains 18 test cases covering:
 - Password confirmation validation
 - Duplicate email handling and email letter case
 - Password advice and navigation between registration and login
+
+### Basket / Cart
+
+The initial Basket / Cart test run contains 11 test cases covering:
+
+- Adding one or multiple products to the basket
+- Increasing and decreasing product quantities
+- Removing products from the basket
+- Verifying the basket total for multiple products
+- Basket persistence after logout and re-login
+- Basket contents after refreshing the page
+- Adding the same product more than once
+- Decreasing quantity when it is already 1
+- Accessing the basket without logging in
 
 ## Initial Test Run Results
 
@@ -111,15 +139,32 @@ Detailed results and the original Qase export are available in [`qa/test-runs/au
 
 The exported results include failed cases related to password length validation, password confirmation after changing the password, email letter case, and the password character counter.
 
-**Note:** These figures reflect the exported test run and may change as execution continues. OJST-26 contains steps that were not executed at the time of export.
+**Note:** These figures reflect the exported test run. OJST-26 contains steps that were not executed at the time of export.
 
 Detailed results and the original Qase export are available in [`qa/test-runs/registration/`](qa/test-runs/registration/).
+
+### Basket / Cart
+
+| Metric | Result |
+|---|---:|
+| Test cases executed | 11 |
+| Passed | 10 |
+| Failed | 1 |
+| Pass rate | 90.9% |
+| Fail rate | 9.1% |
+| Execution status | Completed |
+
+**Defect — D-6:** The basket total displayed `6.970000000000001` instead of `6.97` for a basket containing two Apple Juices priced at `1.99` each and one Orange Juice priced at `2.99`.
+
+The observed issue concerns the formatting of the displayed monetary value. The test does not independently establish whether the underlying transaction amount is incorrect.
+
+Detailed results and the original Qase export are available in [`qa/test-runs/basket-cart/`](qa/test-runs/basket-cart/).
 
 ## Defect Reports and Evidence
 
 The `qa/bug-reports/` directory contains individual Markdown reports and dated CSV exports from Qase.
 
-The current reports are identified as D-1 through D-5. They document observed application behavior and potential defects; observations that depend on unconfirmed requirements are explicitly marked for further investigation.
+The current reports are identified as D-1 through D-6. They document observed application behavior and potential defects; observations that depend on unconfirmed requirements are explicitly marked for further investigation.
 
 Screenshots are stored in [`qa/evidence/screenshots/`](qa/evidence/screenshots/) and use matching defect identifiers where applicable.
 
